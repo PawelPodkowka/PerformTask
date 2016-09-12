@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Linq;
 using PerformTask.DataLoader.Interfaces;
 
 namespace PerformTask.DataLoader
@@ -18,11 +15,12 @@ namespace PerformTask.DataLoader
             _folderPath = folderPath;
         }
 
-        public void Read(Action<string> analizeContent)
+        public void Read(Action<XDocument> contentAction)
         {
             foreach (var file in Directory.EnumerateFiles(_folderPath, _fileExtensions))
             {
-                analizeContent(File.ReadAllText(file));
+                var xmlDocument = XDocument.Parse(File.ReadAllText(file));
+                contentAction(xmlDocument);
             }
         }
     }

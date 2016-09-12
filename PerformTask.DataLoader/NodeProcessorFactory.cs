@@ -14,6 +14,7 @@ namespace PerformTask.DataLoader
         {
             return new NodesProcessor(new FileSourceReader(filePath), 
                                       CreateRestApiLoader(),
+                                      new NodeCreator(), 
                                       CreateValidators());
         }
 

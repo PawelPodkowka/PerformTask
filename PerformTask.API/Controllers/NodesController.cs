@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
+using PerformTask.Common.Model;
 
 namespace PerformTask.API.Controllers
 {
@@ -16,9 +12,8 @@ namespace PerformTask.API.Controllers
             return Ok();
         }
 
-
         [HttpPost]
-        public IHttpActionResult Add([FromBody] string node)
+        public IHttpActionResult Add(Node node)
         {
 
             return Ok();

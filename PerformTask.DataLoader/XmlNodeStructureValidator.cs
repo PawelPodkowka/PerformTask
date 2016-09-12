@@ -1,20 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Xml.Linq;
-using PerformTask.Common;
 using PerformTask.DataLoader.Interfaces;
 
 namespace PerformTask.DataLoader
 {
     internal class XmlNodeStructureValidator : IValidator
     {
-        public bool Validate(string content)
+        public bool Validate(XDocument document)
         {
-            var document = XDocument.Parse(content);
-            return document.Root.Element("id") != null;
+            var node = document.Root;
+            if (node == null)return false;
+
+            var containsId = node.Element("id") != null;
+            var containsAdjacentNodes = ContainsAtLeastOneAdjcactentNode(node.Element("adjacentNodes"));
+
+            return containsId && containsAdjacentNodes;
+        }
+
+        private bool ContainsAtLeastOneAdjcactentNode(XContainer adjacentNodes)
+        {
+            return adjacentNodes != null && adjacentNodes.Elements("id").Any();
         }
     }
 }

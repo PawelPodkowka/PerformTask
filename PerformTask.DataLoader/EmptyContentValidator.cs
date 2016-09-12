@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Xml.Linq;
 using PerformTask.DataLoader.Interfaces;
 
 namespace PerformTask.DataLoader
 {
     internal class EmptyContentValidator : IValidator
     {
-        public bool Validate(string content)
+        public bool Validate(XDocument document)
         {
-            return !string.IsNullOrWhiteSpace(content);
+            return document.Root != null;
         }
     }
 }

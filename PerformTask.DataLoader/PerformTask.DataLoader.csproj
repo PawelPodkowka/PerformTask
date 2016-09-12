@@ -48,7 +48,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmptyContentValidator.cs" />
+    <Compile Include="Interfaces\INodeCreator.cs" />
     <Compile Include="Interfaces\INodesProcessor.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="NodeAttributes.Designer.cs">
+      <DependentUpon>NodeAttributes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="NodeCreator.cs" />
     <Compile Include="NodeProcessorFactory.cs" />
     <Compile Include="NodesProcessor.cs" />
     <Compile Include="FileSourceReader.cs" />
@@ -78,6 +86,12 @@
       <Project>{2e7edea7-443e-4849-9939-5c662bcf22f6}</Project>
       <Name>PerformTask.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NodeAttributes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NodeAttributes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

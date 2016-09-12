@@ -21,7 +21,9 @@ namespace PerformTask.DataLoader
         {
             var client = new RestClient(_apiEndPiont);
             var request = new RestRequest("nodes", Method.POST);
-            request.AddBody(content);
+            request.RequestFormat = DataFormat.Json;
+            //request.AddXmlBody(content);
+            request.AddBody(new Node() { Id = 5, Label = "ala ma kota"});
             var result = client.Execute(request);
         }
     }

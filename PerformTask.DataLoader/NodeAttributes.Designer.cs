@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PerformTask.Common {
+namespace PerformTask.DataLoader {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace PerformTask.Common {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class NodeAttributes {
+    internal class NodeAttributes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace PerformTask.Common {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PerformTask.Common.NodeAttributes", typeof(NodeAttributes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PerformTask.DataLoader.NodeAttributes", typeof(NodeAttributes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace PerformTask.Common {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,11 +61,29 @@ namespace PerformTask.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to adjacentNodes.
+        /// </summary>
+        internal static string AdjacentNodesName {
+            get {
+                return ResourceManager.GetString("AdjacentNodesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to id.
         /// </summary>
-        public static string KeyName {
+        internal static string IdentifierName {
             get {
-                return ResourceManager.GetString("KeyName", resourceCulture);
+                return ResourceManager.GetString("IdentifierName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to label.
+        /// </summary>
+        internal static string LabelName {
+            get {
+                return ResourceManager.GetString("LabelName", resourceCulture);
             }
         }
     }

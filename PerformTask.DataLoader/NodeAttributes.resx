@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="KeyName" xml:space="preserve">
+  <data name="AdjacentNodesName" xml:space="preserve">
+    <value>adjacentNodes</value>
+  </data>
+  <data name="IdentifierName" xml:space="preserve">
     <value>id</value>
+  </data>
+  <data name="LabelName" xml:space="preserve">
+    <value>label</value>
   </data>
 </root>

@@ -4,7 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using System.Xml.Schema;
+using System.Xml.Serialization;
 using PerformTask.DataLoader.Interfaces;
 
 namespace PerformTask.DataLoader
@@ -13,28 +15,46 @@ namespace PerformTask.DataLoader
     {
         private readonly ISourceReader _sourceReader;
         private readonly IDataLoader _loader;
+        private readonly INodeCreator _nodeCreator;
         private readonly IEnumerable<IValidator> _validators;
 
-        public NodesProcessor(ISourceReader sourceReader, IDataLoader loader, IEnumerable<IValidator> validators)
+        public NodesProcessor(ISourceReader sourceReader, IDataLoader loader, INodeCreator nodeCreator, IEnumerable<IValidator> validators)
         {
             _sourceReader = sourceReader;
             _loader = loader;
+            _nodeCreator = nodeCreator;
             _validators = validators;
         }
 
         public void Process()
         {
-            _sourceReader.Read(content =>
-            {
-                if (!ValidatieContent(content)) return;
+            var nodes = LoadNodes();
+            //_sourceReader.Read(document =>
+            //{
+            //    if (!ValidatieNodeContent(document)) return;
 
-                _loader.Load(content);
-            });
+                
+
+            //    _loader.Load(document);
+            //});
         }
 
-        private bool ValidatieContent(string content)
+        private IEnumerable<Node> LoadNodes()
         {
-            return _validators.All(x => x.Validate(content));
+            var result = new List<Node>();
+            _sourceReader.Read(document =>
+            {
+                if (!ValidatieNodeContent(document))
+                    throw new ArgumentException("Node is incorrect");
+                
+                result.Add(_nodeCreator.Create(document));
+            });
+            return result;
+        }
+
+        private bool ValidatieNodeContent(XDocument document)
+        {
+            return _validators.All(x => x.Validate(document));
         }
     }  
 }

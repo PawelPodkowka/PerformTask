@@ -2,8 +2,8 @@
 
 namespace PerformTask.DataLoader.Interfaces
 {
-    internal interface IValidator
+    internal interface INodeCreator
     {
-        bool Validate(XDocument document);
+        Node Create(XDocument document);
     }
 }
