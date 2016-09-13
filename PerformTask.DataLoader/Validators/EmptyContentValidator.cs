@@ -1,9 +1,9 @@
 ﻿using System.Xml.Linq;
-using PerformTask.DataLoader.Interfaces;
+using PerformTask.Common.Validators;
 
-namespace PerformTask.DataLoader
+namespace PerformTask.DataLoader.Validators
 {
-    internal class EmptyContentValidator : IValidator
+    internal class EmptyContentValidator : IValidator<XDocument>
     {
         public bool Validate(XDocument document)
         {

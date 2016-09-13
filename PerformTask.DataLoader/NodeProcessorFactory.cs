@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Xml.Linq;
+using PerformTask.Common.Validators;
 using PerformTask.DataLoader.Interfaces;
 using PerformTask.DataLoader.Properties;
+using PerformTask.DataLoader.Validators;
 
 namespace PerformTask.DataLoader
 {
@@ -18,9 +17,9 @@ namespace PerformTask.DataLoader
                                       CreateValidators());
         }
 
-        private IEnumerable<IValidator> CreateValidators()
+        private IEnumerable<IValidator<XDocument>> CreateValidators()
         {
-            return new List<IValidator>
+            return new List<IValidator<XDocument>>
             {
                 new EmptyContentValidator(),
                 new XmlNodeStructureValidator()

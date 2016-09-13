@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmptyContentValidator.cs" />
+    <Compile Include="Validators\EmptyContentValidator.cs" />
     <Compile Include="Interfaces\INodeCreator.cs" />
     <Compile Include="Interfaces\INodesProcessor.cs" />
     <Compile Include="Node.cs" />
@@ -62,7 +62,6 @@
     <Compile Include="FileSourceReader.cs" />
     <Compile Include="Interfaces\IDataLoader.cs" />
     <Compile Include="Interfaces\ISourceReader.cs" />
-    <Compile Include="Interfaces\IValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -71,7 +70,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="RestApiDataLoader.cs" />
-    <Compile Include="XmlNodeStructureValidator.cs" />
+    <Compile Include="Validators\XmlNodeStructureValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

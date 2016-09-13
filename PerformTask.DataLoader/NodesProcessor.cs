@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using System.Xml.Schema;
-using System.Xml.Serialization;
+using PerformTask.Common.Validators;
 using PerformTask.DataLoader.Interfaces;
 
 namespace PerformTask.DataLoader
@@ -16,9 +12,9 @@ namespace PerformTask.DataLoader
         private readonly ISourceReader _sourceReader;
         private readonly IDataLoader _loader;
         private readonly INodeCreator _nodeCreator;
-        private readonly IEnumerable<IValidator> _validators;
+        private readonly IEnumerable<IValidator<XDocument>> _validators;
 
-        public NodesProcessor(ISourceReader sourceReader, IDataLoader loader, INodeCreator nodeCreator, IEnumerable<IValidator> validators)
+        public NodesProcessor(ISourceReader sourceReader, IDataLoader loader, INodeCreator nodeCreator, IEnumerable<IValidator<XDocument>> validators)
         {
             _sourceReader = sourceReader;
             _loader = loader;
@@ -29,14 +25,7 @@ namespace PerformTask.DataLoader
         public void Process()
         {
             var nodes = LoadNodes();
-            //_sourceReader.Read(document =>
-            //{
-            //    if (!ValidatieNodeContent(document)) return;
-
-                
-
-            //    _loader.Load(document);
-            //});
+            
         }
 
         private IEnumerable<Node> LoadNodes()
