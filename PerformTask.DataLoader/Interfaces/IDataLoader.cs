@@ -1,7 +1,10 @@
-﻿namespace PerformTask.DataLoader.Interfaces
+﻿using System.Collections.Generic;
+using PerformTask.Common.Model;
+
+namespace PerformTask.DataLoader.Interfaces
 {
     internal interface IDataLoader
     {
-        void Load(string content);
+        void Load(IEnumerable<Node> graph);
     }
 }

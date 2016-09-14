@@ -6,6 +6,6 @@ namespace PerformTask.Common.Model
     {
         public int Id { get; set; }
         public string Label { get; set; }
-        public List<int> AdjacentNodes { get; set; }
+        public IEnumerable<int> AdjacentNodes { get; set; }
     }
 }

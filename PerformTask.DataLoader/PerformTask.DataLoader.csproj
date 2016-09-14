@@ -50,7 +50,6 @@
     <Compile Include="Validators\EmptyContentValidator.cs" />
     <Compile Include="Interfaces\INodeCreator.cs" />
     <Compile Include="Interfaces\INodesProcessor.cs" />
-    <Compile Include="Node.cs" />
     <Compile Include="NodeAttributes.Designer.cs">
       <DependentUpon>NodeAttributes.resx</DependentUpon>
       <AutoGen>True</AutoGen>

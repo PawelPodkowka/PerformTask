@@ -7,7 +7,7 @@ namespace PerformTask.DataLoader.Validators
     {
         public bool Validate(XDocument document)
         {
-            return document.Root != null;
+            return document?.Root != null;
         }
     }
 }

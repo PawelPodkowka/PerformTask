@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Xml.Linq;
+using PerformTask.Common.Model;
 using PerformTask.DataLoader.Interfaces;
 
 namespace PerformTask.DataLoader

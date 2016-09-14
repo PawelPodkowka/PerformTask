@@ -14,7 +14,8 @@ namespace PerformTask.DataLoader
             return new NodesProcessor(new FileSourceReader(filePath), 
                                       CreateRestApiLoader(),
                                       new NodeCreator(), 
-                                      CreateValidators());
+                                      CreateValidators(),
+                                      new GraphValidator());
         }
 
         private IEnumerable<IValidator<XDocument>> CreateValidators()
