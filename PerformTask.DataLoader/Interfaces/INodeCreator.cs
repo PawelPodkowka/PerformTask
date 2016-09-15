@@ -3,7 +3,7 @@ using PerformTask.Common.Model;
 
 namespace PerformTask.DataLoader.Interfaces
 {
-    internal interface INodeCreator
+    public interface INodeCreator
     {
         Node Create(XDocument document);
     }

@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
+using PerformTask.Common.Exceptions;
 using PerformTask.DataLoader.Interfaces;
 
 namespace PerformTask.DataLoader
 {
-    internal class FileSourceReader : ISourceReader
+    public class FileSourceReader : ISourceReader
     {
         private readonly string _folderPath;
         private const string _fileExtensions = "*.xml";
@@ -15,12 +19,21 @@ namespace PerformTask.DataLoader
             _folderPath = folderPath;
         }
 
-        public void Read(Action<XDocument> contentAction)
+        public IEnumerable<XDocument> ReadNodes()
         {
-            foreach (var file in Directory.EnumerateFiles(_folderPath, _fileExtensions))
+            return Directory.EnumerateFiles(_folderPath, _fileExtensions)
+                            .Select(LoadXml);
+        }
+
+        private XDocument LoadXml(string file)
+        {
+            try
             {
-                var xmlDocument = XDocument.Parse(File.ReadAllText(file));
-                contentAction(xmlDocument);
+                return XDocument.Load(file);
+            }
+            catch (XmlException exc)
+            {
+                throw new ValidationException($"File {file} does not contain proper conent.", exc);
             }
         }
     }

@@ -3,7 +3,7 @@ using PerformTask.Common.Model;
 
 namespace PerformTask.DataLoader.Interfaces
 {
-    internal interface IDataLoader
+    public interface IDataLoader
     {
         void Load(IEnumerable<Node> graph);
     }

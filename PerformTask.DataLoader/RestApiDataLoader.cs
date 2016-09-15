@@ -5,7 +5,7 @@ using RestSharp;
 
 namespace PerformTask.DataLoader
 {
-    internal class RestApiDataLoader : IDataLoader
+    public class RestApiDataLoader : IDataLoader
     {
         private readonly string _apiEndPiont;
         private const string _resourceName = "nodes";

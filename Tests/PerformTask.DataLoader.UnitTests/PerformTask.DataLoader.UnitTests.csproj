@@ -48,6 +48,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -63,6 +65,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PerformTask.Common\PerformTask.Common.csproj">
+      <Project>{2e7edea7-443e-4849-9939-5c662bcf22f6}</Project>
+      <Name>PerformTask.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PerformTask.DataLoader\PerformTask.DataLoader.csproj">
+      <Project>{5d3ac3ee-6ba2-453d-be9c-4533d67a8792}</Project>
+      <Name>PerformTask.DataLoader</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

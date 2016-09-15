@@ -4,7 +4,7 @@ using PerformTask.Common.Validators;
 
 namespace PerformTask.DataLoader.Validators
 {
-    internal class XmlNodeStructureValidator : IValidator<XDocument>
+    public class XmlNodeStructureValidator : IValidator<XDocument>
     {
         public bool Validate(XDocument document)
         {

@@ -1,6 +1,6 @@
 ﻿namespace PerformTask.DataLoader.Interfaces
 {
-    internal interface INodesProcessor
+    public interface INodesProcessor
     {
         void Process();
     }

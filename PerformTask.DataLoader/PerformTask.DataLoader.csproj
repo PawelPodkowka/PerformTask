@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Validators\EmptyContentValidator.cs" />
     <Compile Include="Interfaces\INodeCreator.cs" />
     <Compile Include="Interfaces\INodesProcessor.cs" />
     <Compile Include="NodeAttributes.Designer.cs">

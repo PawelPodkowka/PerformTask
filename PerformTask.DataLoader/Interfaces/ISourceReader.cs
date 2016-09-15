@@ -1,10 +1,10 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Xml.Linq;
 
 namespace PerformTask.DataLoader.Interfaces
 {
-    internal interface ISourceReader
+    public interface ISourceReader
     {
-        void Read(Action<XDocument> contentAction);
+        IEnumerable<XDocument> ReadNodes();
     }
 }

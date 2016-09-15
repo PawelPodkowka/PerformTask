@@ -6,7 +6,7 @@ using PerformTask.DataLoader.Interfaces;
 
 namespace PerformTask.DataLoader
 {
-    internal class NodeCreator : INodeCreator
+    public class NodeCreator : INodeCreator
     {
         public Node Create(XDocument document)
         {

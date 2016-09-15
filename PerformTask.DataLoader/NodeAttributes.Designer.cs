@@ -22,21 +22,21 @@ namespace PerformTask.DataLoader {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class NodeAttributes {
+    public class NodeAttributes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal NodeAttributes() {
+        public NodeAttributes() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PerformTask.DataLoader.NodeAttributes", typeof(NodeAttributes).Assembly);
@@ -51,7 +51,7 @@ namespace PerformTask.DataLoader {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace PerformTask.DataLoader {
         /// <summary>
         ///   Looks up a localized string similar to adjacentNodes.
         /// </summary>
-        internal static string AdjacentNodesName {
+        public static string AdjacentNodesName {
             get {
                 return ResourceManager.GetString("AdjacentNodesName", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace PerformTask.DataLoader {
         /// <summary>
         ///   Looks up a localized string similar to id.
         /// </summary>
-        internal static string IdentifierName {
+        public static string IdentifierName {
             get {
                 return ResourceManager.GetString("IdentifierName", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace PerformTask.DataLoader {
         /// <summary>
         ///   Looks up a localized string similar to label.
         /// </summary>
-        internal static string LabelName {
+        public static string LabelName {
             get {
                 return ResourceManager.GetString("LabelName", resourceCulture);
             }

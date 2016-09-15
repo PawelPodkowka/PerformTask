@@ -9,45 +9,48 @@ using PerformTask.DataLoader.Interfaces;
 
 namespace PerformTask.DataLoader
 {
-    internal class NodesProcessor : INodesProcessor
+    public class NodesProcessor : INodesProcessor
     {
+        private const int MIN_NUMBER_OF_NODES = 2;
         private readonly ISourceReader _sourceReader;
         private readonly IDataLoader _loader;
         private readonly INodeCreator _nodeCreator;
-        private readonly IEnumerable<IValidator<XDocument>> _validators;
+        private readonly IValidator<XDocument> _nodeValidator;
         private readonly IValidator<IEnumerable<Node>> _graphValidator;
 
-        public NodesProcessor(ISourceReader sourceReader, IDataLoader loader, INodeCreator nodeCreator, IEnumerable<IValidator<XDocument>> validators, IValidator<IEnumerable<Node>> graphValidator)
+        public NodesProcessor(ISourceReader sourceReader, IDataLoader loader, INodeCreator nodeCreator, IValidator<XDocument> nodeValidator, IValidator<IEnumerable<Node>> graphValidator)
         {
             _sourceReader = sourceReader;
             _loader = loader;
             _nodeCreator = nodeCreator;
-            _validators = validators;
+            _nodeValidator = nodeValidator;
             _graphValidator = graphValidator;
         }
 
         public void Process()
         {
             var nodes = LoadNodes();
+            if (nodes == null) return;
+
             ValidateGraphStructure(nodes);
             _loader.Load(nodes);
         }
-
+        
         private IEnumerable<Node> LoadNodes()
         {
-            var result = new List<Node>();
-            _sourceReader.Read(document =>
-            {
-                ValidatieNodeContent(document);
-                result.Add(_nodeCreator.Create(document));
-            });
-            return result;
+            var documents = _sourceReader.ReadNodes();
+            if (documents.Count() < MIN_NUMBER_OF_NODES) return null;
+
+            ValidatieNodeContents(documents);
+            return documents.Select(x => _nodeCreator.Create(x));
         }
 
-        private void ValidatieNodeContent(XDocument document)
+        private void ValidatieNodeContents(IEnumerable<XDocument> documents)
         {
-            if (_validators.Any(x => !x.Validate(document)))
+            if (documents.Any(document => !_nodeValidator.Validate(document)))
+            {
                 ThrowValidationError("Node is incorrect");
+            }
         }
 
         private void ValidateGraphStructure(IEnumerable<Node> nodes)

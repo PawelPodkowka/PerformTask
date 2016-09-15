@@ -7,24 +7,15 @@ using PerformTask.DataLoader.Validators;
 
 namespace PerformTask.DataLoader
 {
-    internal class NodeProcessorFactory
+    public class NodeProcessorFactory
     {
         public INodesProcessor Create(string filePath)
         {
             return new NodesProcessor(new FileSourceReader(filePath), 
                                       CreateRestApiLoader(),
-                                      new NodeCreator(), 
-                                      CreateValidators(),
+                                      new NodeCreator(),
+                                      new XmlNodeStructureValidator(),
                                       new GraphValidator());
-        }
-
-        private IEnumerable<IValidator<XDocument>> CreateValidators()
-        {
-            return new List<IValidator<XDocument>>
-            {
-                new EmptyContentValidator(),
-                new XmlNodeStructureValidator()
-            };
         }
 
         private IDataLoader CreateRestApiLoader()
