@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PerformTask.Common.Model
 {
@@ -6,6 +8,6 @@ namespace PerformTask.Common.Model
     {
         public int Id { get; set; }
         public string Label { get; set; }
-        public IEnumerable<int> AdjacentNodes { get; set; }
+        public List<int> AdjacentNodes { get; set; }
     }
 }

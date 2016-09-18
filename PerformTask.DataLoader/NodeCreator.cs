@@ -18,6 +18,7 @@ namespace PerformTask.DataLoader
                 AdjacentNodes = docNode.Element(NodeAttributes.AdjacentNodesName)
                                         .Elements(NodeAttributes.IdentifierName)
                                         .Select(x=> Convert.ToInt32(x.Value))
+                                        .ToList()
             };
 
             return node;
