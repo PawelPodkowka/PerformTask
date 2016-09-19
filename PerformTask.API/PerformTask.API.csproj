@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GraphPathController.cs" />
     <Compile Include="Controllers\NodesController.cs" />
     <Compile Include="DAL\NodeEnt.cs" />
     <Compile Include="DAL\NodesContext.cs" />

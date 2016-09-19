@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using PerformTask.API.Repositories;
 using PerformTask.Common.Model;
-using PerformTask.Common.Services;
 
 namespace PerformTask.API.Controllers
 {
@@ -22,21 +21,15 @@ namespace PerformTask.API.Controllers
         public IHttpActionResult Get()
         {
             var nodes = _repository.Get();
-            if (nodes.Any())
-            {
-                return Ok(nodes);
-            }
-            else
-            {
-                return StatusCode(HttpStatusCode.NoContent);
-            }
+            return Ok(nodes);
         }
 
         [HttpPost]
-        public IHttpActionResult Add(IEnumerable<Node> node)
+        public async Task<IHttpActionResult> Add(IEnumerable<Node> node)
         {
-
-            return Ok();
+            _repository.ClearAll();
+            await _repository.Create(node);
+            return StatusCode(HttpStatusCode.Created);
         }
     }
 }

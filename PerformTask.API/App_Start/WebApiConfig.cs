@@ -2,6 +2,7 @@
 using System.Web.Http;
 using DryIoc;
 using DryIoc.WebApi;
+using PerformTask.API.Controllers;
 using PerformTask.API.DAL;
 using PerformTask.API.Repositories;
 using PerformTask.Common.Installation;

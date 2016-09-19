@@ -22,7 +22,7 @@ namespace PerformTask.DataLoader
             {
                 RequestFormat = DataFormat.Json
             };
-            request.AddBody(new Node() { Id = 5, Label = "ala ma kota"});
+            request.AddBody(graph);
             var result = client.Execute(request);
         }
     }

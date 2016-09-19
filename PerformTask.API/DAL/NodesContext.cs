@@ -20,6 +20,7 @@ namespace PerformTask.API.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<NodeEnt>().ToTable("Nodes");
             modelBuilder.Entity<NodeEnt>().HasKey(x => x.Id);
             modelBuilder.Entity<NodeEnt>().Property(x => x.AdjacentNodesAsString).IsRequired();
         }

@@ -24,12 +24,14 @@ namespace PerformTask.API.Repositories
 
         public Task<int> Create(IEnumerable<Node> nodes)
         {
-            throw new NotImplementedException();
+            var nodesToAdd = nodes.Select(NodeEnt.CreateFromNode);
+            _dbContext.Nodes.AddRange(nodesToAdd);
+            return _dbContext.SaveChangesAsync();
         }
 
         public void ClearAll()
         {
-            throw new NotImplementedException();
+            _dbContext.Database.ExecuteSqlCommand("truncate table Nodes");
         }
     }
 }

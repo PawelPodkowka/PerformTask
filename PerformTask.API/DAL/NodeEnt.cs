@@ -24,5 +24,15 @@ namespace PerformTask.API.DAL
                                      .ToList();
             }
         }
+
+        public static NodeEnt CreateFromNode(Node node)
+        {
+            return new NodeEnt()
+            {
+                Id = node.Id,
+                AdjacentNodes = node.AdjacentNodes,
+                Label = node.Label
+            };
+        }
     }
 }
