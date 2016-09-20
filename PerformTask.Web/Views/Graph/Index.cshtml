@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "SPA";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section SPAViews {
+    TEST
+    <div ng-app="PawelPodkowkaTask">
+        <div ng-view></div>
+    </div>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/app")
+}
