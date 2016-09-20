@@ -1,11 +1,8 @@
-﻿using System.EnterpriseServices;
-using System.Web.Http;
+﻿using System.Web.Http;
 using DryIoc;
 using DryIoc.WebApi;
-using PerformTask.API.Controllers;
 using PerformTask.API.DAL;
 using PerformTask.API.Repositories;
-using PerformTask.Common.Installation;
 using PerformTask.Common.Services;
 
 namespace PerformTask.API
@@ -17,9 +14,6 @@ namespace PerformTask.API
             // Web API configuration and services
             var container = new Container().WithWebApi(config);
             InstallDependencies(container);
-
-            var commonInstaller = new ModuleRegistrator();
-            commonInstaller.Register(container);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

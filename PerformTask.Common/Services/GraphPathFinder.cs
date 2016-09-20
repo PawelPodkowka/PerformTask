@@ -14,7 +14,7 @@ namespace PerformTask.Common.Services
 
         public IEnumerable<Connection> CalculateRoute(int start, int end, IEnumerable<Node> nodes)
         {
-            if (CanCalculateRoute(start, end, nodes)) return null;
+            if (!CanCalculateRoute(start, end, nodes)) return null;
 
             var currentNode = nodes.Single(x => x.Id == start);
             var visitedNodes = new List<int> { start };
@@ -37,7 +37,7 @@ namespace PerformTask.Common.Services
                 foreach (var node in currentNode.AdjacentNodes)
                 {
                     var currentRoute = route.ToList();
-                    if (!visitedNodes.Contains(node)) continue;
+                    if (visitedNodes.Contains(node)) continue;
 
                     currentRoute.Add(new Connection(currentNode.Id, node));
                     possibleRoutes.Add(node, currentRoute);

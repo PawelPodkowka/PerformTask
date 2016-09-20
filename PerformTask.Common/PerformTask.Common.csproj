@@ -40,12 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DryIoc\AsyncExecutionFlowScopeContext.cs" />
-    <Compile Include="DryIoc\FactoryCompiler.cs" />
     <Compile Include="Exceptions\ValidationException.cs" />
-    <Compile Include="DryIoc\Container.cs" />
-    <Compile Include="Installation\IModuleDependencyRegistrator.cs" />
-    <Compile Include="Installation\ModuleRegistrator.cs" />
     <Compile Include="Model\Connection.cs" />
     <Compile Include="Model\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,9 +48,6 @@
     <Compile Include="Services\IGraphPathFinder.cs" />
     <Compile Include="Validators\GraphValidator.cs" />
     <Compile Include="Validators\IValidator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
