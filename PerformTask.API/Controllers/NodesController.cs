@@ -20,8 +20,18 @@ namespace PerformTask.API.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            var nodes = _repository.Get();
-            return Ok(nodes);
+            var nodes = _repository.Get()
+                                   .ToList()
+                                   .Select(n=> new {Node = new {Id = n.Id, Label = n.Label},
+                                                    Edges = n.AdjacentNodes.Select(c=> new Connection(n.Id, c))});
+
+            var result = new 
+            { 
+                Nodes = nodes.Select(x => x.Node),
+                Edges = nodes.SelectMany(x => x.Edges) 
+            };
+
+            return Ok(result);
         }
 
         [HttpPost]
@@ -33,3 +43,4 @@ namespace PerformTask.API.Controllers
         }
     }
 }
+ 

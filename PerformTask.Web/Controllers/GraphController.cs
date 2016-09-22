@@ -13,5 +13,10 @@ namespace PerformTask.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Show()
+        {
+            return PartialView("Show");
+        }
     }
 }

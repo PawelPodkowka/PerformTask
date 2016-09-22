@@ -20,9 +20,11 @@ namespace PerformTask.Web.App_Start
                 "~/Scripts/angular-animate.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                "~/Scripts/vis.js",
+                "~/Scripts/app/visGraphDiective.js",
                 "~/Scripts/app/appModule.js",
                 "~/Scripts/app/graphService.js",
-                "~/Scripts/app/graphContactsController.js"));
+                "~/Scripts/app/graphController.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

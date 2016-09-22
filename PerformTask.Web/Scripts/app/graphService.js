@@ -1,7 +1,7 @@
 ﻿app.service('GraphService', function($http) {
 
     this.getNodes = function() {
-        return $http.get("api/nodes");
+        return $http.get("http://localhost:54718/api/nodes");
     };
 
     this.getShortestPath = function(start, end) {
@@ -12,6 +12,6 @@
             }
         }
 
-        return $http.get("api/graphpath", config);
+        return $http.get("http://localhost:54718/api/graphpath", config);
     };
 });

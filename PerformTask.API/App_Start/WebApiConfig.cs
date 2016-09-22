@@ -4,6 +4,8 @@ using DryIoc.WebApi;
 using PerformTask.API.DAL;
 using PerformTask.API.Repositories;
 using PerformTask.Common.Services;
+using System.Net.Http.Formatting;
+using Newtonsoft.Json.Serialization;
 
 namespace PerformTask.API
 {
@@ -14,6 +16,8 @@ namespace PerformTask.API
             // Web API configuration and services
             var container = new Container().WithWebApi(config);
             InstallDependencies(container);
+
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             // Web API routes
             config.MapHttpAttributeRoutes();

@@ -27,7 +27,7 @@ namespace PerformTask.DataLoader
         private string GetLabel(XElement document)
         {
             var labelElement = document.Element(NodeAttributes.LabelName);
-            return labelElement?.Value ?? string.Empty;
+            return labelElement.Value ?? string.Empty;
         }
     }
 }
