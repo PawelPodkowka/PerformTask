@@ -11,17 +11,31 @@ namespace PerformTask.API.Controllers
     public class NodesController : ApiController
     {
         private readonly INodesRepository _repository;
+        private readonly IEqualityComparer<Connection> _connectionComparer;
 
-        public NodesController(INodesRepository repository)
+        public NodesController(INodesRepository repository, IEqualityComparer<Connection> connectionComparer)
         {
             _repository = repository;
+            _connectionComparer = connectionComparer;
         }
 
         [HttpGet]
         public IHttpActionResult Get()
         {
-            var nodes = _repository.Get();
-            return Ok(nodes);
+            var nodes = _repository.Get()
+                                   .ToList()
+                                   .Select(n => new {
+                                       Node = new { Id = n.Id, Label = n.Label },
+                                       Edges = n.AdjacentNodes.Select(c => new Connection(n.Id, c))
+                                   });
+
+            var result = new
+            {
+                Nodes = nodes.Select(x => x.Node),
+                Edges = nodes.SelectMany(x => x.Edges).Distinct(_connectionComparer)
+            };
+
+            return Ok(result);
         }
 
         [HttpPost]

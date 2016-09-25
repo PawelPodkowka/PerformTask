@@ -1,6 +1,9 @@
 ﻿
 @{
     ViewBag.Title = "In progress";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>In progress</h2>
+<h2>Avesome graph</h2>
+<button class="btn btn-primary find-btn" ng-click="findPath()" ng-disabled="!showFindButton">FIND THE SHORTEST PATH</button>
+<div id="graph" vis-graph data="graph.data" options="graph.options" event="select" callback="selectNode(params)" path="bestPath" style="width: 100%; height: 600px"></div>

@@ -19,8 +19,9 @@ namespace PerformTask.API.Controllers
         [HttpGet]
         public IHttpActionResult Get(int start, int end)
         {
-            var nodes = _nodeRepository.Get().ToList();
-            return Ok(_pathFinder.CalculateRoute(start, end, nodes));
+            var nodes = _nodeRepository.Get();
+            var path = _pathFinder.CalculateRoute(start, end, nodes);
+            return Ok(path);
         }
     }
 }

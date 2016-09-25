@@ -1,4 +1,4 @@
-﻿var app = angular.module('PawelPodkowkaTask', ["ngRoute", "ngAnimate"]);
+﻿var app = angular.module('PawelPodkowkaTask', ["ngRoute", "ngAnimate", "ang.mod.visgraph"]);
 
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {

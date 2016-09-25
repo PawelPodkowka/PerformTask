@@ -4,6 +4,11 @@ using DryIoc.WebApi;
 using PerformTask.API.DAL;
 using PerformTask.API.Repositories;
 using PerformTask.Common.Services;
+using System.Net.Http.Formatting;
+using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
+using PerformTask.Common.Model;
+using PerformTask.API.Comparers;
 
 namespace PerformTask.API
 {
@@ -14,6 +19,8 @@ namespace PerformTask.API
             // Web API configuration and services
             var container = new Container().WithWebApi(config);
             InstallDependencies(container);
+
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -28,8 +35,9 @@ namespace PerformTask.API
         private static void InstallDependencies(IContainer container)
         {
             container.Register<IGraphPathFinder, GraphPathFinder>();
-            container.Register<NodesContext>(setup: Setup.With(allowDisposableTransient: true, trackDisposableTransient:true));
+            container.Register<NodesContext>(setup: Setup.With(allowDisposableTransient: true, trackDisposableTransient: true));
             container.Register<INodesRepository, NodesRepository>();
+            container.Register<IEqualityComparer<Connection>, BidirectionalConnectionComparer>();
         }
     }
 }
