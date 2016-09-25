@@ -33,7 +33,7 @@ namespace PerformTask.DataLoader
             }
             catch (XmlException exc)
             {
-                throw new ValidationException($"File {file} does not contain proper conent.", exc);
+                throw new ValidationException("File {file} does not contain proper conent.", exc);
             }
         }
     }
