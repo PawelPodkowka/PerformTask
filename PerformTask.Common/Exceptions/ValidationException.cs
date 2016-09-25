@@ -17,4 +17,19 @@ namespace PerformTask.Common.Exceptions
         {
         }
     }
+
+    public class GraphValidationException : ValidationException
+    {
+        public GraphValidationException(string message) : base(message)
+        {
+        }
+
+        public GraphValidationException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        public GraphValidationException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+    }
 }

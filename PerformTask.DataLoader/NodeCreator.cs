@@ -11,7 +11,7 @@ namespace PerformTask.DataLoader
         public Node Create(XDocument document)
         {
             var docNode = document.Root;
-            var node = new Node
+            return new Node
             {
                 Id = Convert.ToInt32(docNode.Element(NodeAttributes.IdentifierName).Value),
                 Label = GetLabel(docNode),
@@ -20,8 +20,6 @@ namespace PerformTask.DataLoader
                                         .Select(x=> Convert.ToInt32(x.Value))
                                         .ToList()
             };
-
-            return node;
         }
 
         private string GetLabel(XElement document)

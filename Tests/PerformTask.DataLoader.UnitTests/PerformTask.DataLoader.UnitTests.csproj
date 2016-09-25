@@ -60,6 +60,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="NodesProcessorBuilder.cs" />
     <Compile Include="NodesProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

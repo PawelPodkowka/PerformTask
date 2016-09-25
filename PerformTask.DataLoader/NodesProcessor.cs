@@ -49,19 +49,14 @@ namespace PerformTask.DataLoader
         {
             if (documents.Any(document => !_nodeValidator.Validate(document)))
             {
-                ThrowValidationError("Node is incorrect");
+                throw new ValidationException("Node is incorrect");
             }
         }
 
         private void ValidateGraphStructure(IEnumerable<Node> nodes)
         {
             if (!_graphValidator.Validate(nodes))
-                ThrowValidationError("Graph has incorrect structure");
-        }
-
-        private void ThrowValidationError(string validationMessage)
-        {
-            throw new ValidationException(validationMessage);
+                throw new GraphValidationException("Graph has incorrect structure");
         }
     }  
 }
