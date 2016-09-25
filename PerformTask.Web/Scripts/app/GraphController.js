@@ -1,6 +1,6 @@
 ﻿app.controller('GraphController', function ($scope, $location, GraphService) {
     $scope.isLoading = false;
-    $scope.showFindButton = true;
+    $scope.isFindPossible = false;
     var selectedNodes;
     loadGraph();
 
@@ -33,36 +33,23 @@
                           });
     };
 
-    function markPath(item, index) {
-        $scope.bestPath.some(function(connection) {
-            if ((connection.from == item.from && connection.to == item.to)
-                || (connection.to == item.from && connection.from == item.to)) {
-                item.color = '#73F700';
-                item.value = 3;
-            }
-        });
-    }
-
     $scope.findPath = function () {
-        if (selectedNodes) {
+        if (selectedNodes && $scope.isFindPossible) {
             var start = selectedNodes[0];
             var end = selectedNodes[1];
             GraphService.getShortestPath(start, end)
-                              .success(function (result) {
-                                  $scope.bestPath = result;
-                                 // $scope.graph.data.edges.forEach(markPath);
-                              })
-                              .error(function (reason) {
-                                  console.error('Uuups :( I can not find best path ' + reason);
-                              })
-                              .finally(function () {
-                                  $scope.isLoading = false;
-                              });
+                .success(function(result) {
+                    $scope.bestPath = result;
+                })
+                .error(function(reason) {
+                    console.error('Uuups :( I can not find best path ' + reason);
+                });
         }
     }
 
     $scope.selectNode = function (params) {
-        $scope.showFindButton = params.nodes.length == 2;
-        selectedNodes = $scope.showFindButton ? params.nodes : null;
+        $scope.isFindPossible = params.nodes.length === 2;
+        selectedNodes = $scope.isFindPossible ? params.nodes : null;
+        $scope.$apply();
     }
 });

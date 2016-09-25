@@ -37,7 +37,8 @@ namespace PerformTask.Web.App_Start
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
-                 "~/Content/animation.css"));
+                 "~/Content/animation.css",
+                 "~/Content/style.css"));
         }
     }
 }
