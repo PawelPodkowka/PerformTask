@@ -1,17 +1,9 @@
-﻿app.service('GraphService', function($http, ApiConfig) {
+﻿app.service('GraphService', function($http) {
 
-    var apiAddress = "http://localhost:54718";
-
-     //ApiConfig().success(function (result) {
-     //               apiAddress = result;
-     //           })
-     //           .error(function (reason) {
-     //               apiAddress = "http://localhost:54718";
-     //               console.error('Uuups :( I can not find best path ' + reason);
-     //           });
+    var apiAddress = "http://localhost:54718/api/";
 
     this.getNodes = function() {
-        return $http.get("http://localhost:54718/api/nodes");
+        return $http.get(apiAddress + "nodes");
     };
 
     this.getShortestPath = function(start, end) {
@@ -22,6 +14,6 @@
             }
         }
 
-        return $http.get("http://localhost:54718/api/graphpath", config);
+        return $http.get(apiAddress + "graphpath", config);
     };
 });
