@@ -13,8 +13,18 @@ namespace PerformTask.DataLoader
             if (!args.Any())
                 WriteMessage("Uppps! You didn't define source folder");
 
-            var processor = new NodeProcessorFactory().Create(args.FirstOrDefault());
-            processor.Process();
+            var folderName = args.FirstOrDefault();
+            var processor = new NodeProcessorFactory().Create(folderName);
+            try
+            {
+                processor.Process();
+                Console.WriteLine(string.Format("All files from passed directory ({0}) have been processed!", folderName));
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(string.Format("Upps ! :( Something went wrong. Exceptopn occured: {0}", exc.Message));
+            }
+            Console.Read();
         }
 
         private static void WriteMessage(string message)

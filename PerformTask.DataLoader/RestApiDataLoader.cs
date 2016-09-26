@@ -2,6 +2,7 @@
 using PerformTask.Common.Model;
 using PerformTask.DataLoader.Interfaces;
 using RestSharp;
+using System;
 
 namespace PerformTask.DataLoader
 {
@@ -24,6 +25,8 @@ namespace PerformTask.DataLoader
             };
             request.AddBody(graph);
             var result = client.Execute(request);
+            if (result.StatusCode != System.Net.HttpStatusCode.Created && result.StatusCode != System.Net.HttpStatusCode.OK)
+                throw new Exception(string.Format("Problem occured during saving nodes.\n{0}", result.Content));
         }
     }
 }

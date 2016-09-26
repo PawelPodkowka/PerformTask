@@ -9,6 +9,7 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using PerformTask.Common.Model;
 using PerformTask.API.Comparers;
+using PerformTask.Common.Validators;
 
 namespace PerformTask.API
 {
@@ -38,6 +39,8 @@ namespace PerformTask.API
             container.Register<NodesContext>(setup: Setup.With(allowDisposableTransient: true, trackDisposableTransient: true));
             container.Register<INodesRepository, NodesRepository>();
             container.Register<IEqualityComparer<Connection>, BidirectionalConnectionComparer>();
+            container.Register<IValidator<IEnumerable<Node>>, GraphValidator>();
+            container.Register<IBidirectionalGraphMaker, BidirectionalGraphMaker>();
         }
     }
 }

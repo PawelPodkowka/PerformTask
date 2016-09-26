@@ -7,11 +7,6 @@ namespace PerformTask.Common.Services
 {
     public class GraphPathFinder : IGraphPathFinder
     {
-        public GraphPathFinder()
-        {
-                
-        }
-
         public IEnumerable<Connection> CalculateRoute(int start, int end, IEnumerable<Node> nodes)
         {
             if (!CanCalculateRoute(start, end, nodes)) return null;

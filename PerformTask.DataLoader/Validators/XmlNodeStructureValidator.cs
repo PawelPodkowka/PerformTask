@@ -11,8 +11,8 @@ namespace PerformTask.DataLoader.Validators
         public bool Validate(XDocument document)
         {
             var node = document.Root;
-            var containsId = ContainsPositiveIntegerAsAIdentifier(node.Element("id"));
-            var containsAdjacentNodes = ContainsAtLeastOneAdjcactentNode(node.Element("adjacentNodes"));
+            var containsId = ContainsPositiveIntegerAsAIdentifier(node.Element(NodeAttributes.IdentifierName));
+            var containsAdjacentNodes = ContainsAtLeastOneAdjcactentNode(node.Element(NodeAttributes.AdjacentNodesName));
 
             return containsId && containsAdjacentNodes;
         }
@@ -30,7 +30,7 @@ namespace PerformTask.DataLoader.Validators
         {
             if (adjacentNodes == null) return false;
 
-            var adjacents = adjacentNodes.Elements("id");
+            var adjacents = adjacentNodes.Elements(NodeAttributes.IdentifierName);
              return adjacents.Any() && adjacents.All(ContainsPositiveIntegerAsAIdentifier);
         }
     }

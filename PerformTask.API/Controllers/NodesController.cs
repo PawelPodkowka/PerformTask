@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using PerformTask.API.Repositories;
 using PerformTask.Common.Model;
+using PerformTask.Common.Validators;
+using PerformTask.Common.Services;
+using PerformTask.Common.Exceptions;
 
 namespace PerformTask.API.Controllers
 {
@@ -12,11 +15,15 @@ namespace PerformTask.API.Controllers
     {
         private readonly INodesRepository _repository;
         private readonly IEqualityComparer<Connection> _connectionComparer;
+        private readonly IValidator<IEnumerable<Node>> _graphValidator;
+        private readonly IBidirectionalGraphMaker _bidirectionalGraphMaker;
 
-        public NodesController(INodesRepository repository, IEqualityComparer<Connection> connectionComparer)
+        public NodesController(INodesRepository repository, IEqualityComparer<Connection> connectionComparer, IValidator<IEnumerable<Node>> graphValidator, IBidirectionalGraphMaker bidirectionalGraphMaker)
         {
             _repository = repository;
             _connectionComparer = connectionComparer;
+            _graphValidator = graphValidator;
+            _bidirectionalGraphMaker = bidirectionalGraphMaker;
         }
 
         [HttpGet]
@@ -41,6 +48,11 @@ namespace PerformTask.API.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Add(IEnumerable<Node> node)
         {
+            if (!_graphValidator.Validate(node))
+                return InternalServerError(new GraphValidationException("Graph is not valid!"));
+
+            _bidirectionalGraphMaker.MakeBidirectionalGraph(node);
+
             _repository.ClearAll();
             await _repository.Create(node);
             return StatusCode(HttpStatusCode.Created);
