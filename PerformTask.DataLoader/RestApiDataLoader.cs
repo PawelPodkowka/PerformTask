@@ -26,7 +26,7 @@ namespace PerformTask.DataLoader
             request.AddBody(graph);
             var result = client.Execute(request);
             if (result.StatusCode != System.Net.HttpStatusCode.Created && result.StatusCode != System.Net.HttpStatusCode.OK)
-                throw new Exception(string.Format("Problem occured during saving nodes.\n{0}", result.Content));
+                throw new Exception($"Problem occured during saving nodes.\n{result.Content}");
         }
     }
 }

@@ -12,7 +12,7 @@ namespace PerformTask.DataLoader.Validators
         {
             var node = document.Root;
             var containsId = ContainsPositiveIntegerAsAIdentifier(node.Element(NodeAttributes.IdentifierName));
-            var containsAdjacentNodes = ContainsAtLeastOneAdjcactentNode(node.Element(NodeAttributes.AdjacentNodesName));
+            var containsAdjacentNodes = ContainsPositiveIntegersAsAdjcactentNodeIdentifiers(node.Element(NodeAttributes.AdjacentNodesName));
 
             return containsId && containsAdjacentNodes;
         }
@@ -26,12 +26,12 @@ namespace PerformTask.DataLoader.Validators
             return id >= MIN_IDENTIFIER_VALUE;
         }
 
-        private bool ContainsAtLeastOneAdjcactentNode(XContainer adjacentNodes)
+        private bool ContainsPositiveIntegersAsAdjcactentNodeIdentifiers(XContainer adjacentNodes)
         {
-            if (adjacentNodes == null) return false;
+            if (adjacentNodes == null) return true;
 
             var adjacents = adjacentNodes.Elements(NodeAttributes.IdentifierName);
-             return adjacents.Any() && adjacents.All(ContainsPositiveIntegerAsAIdentifier);
+            return !adjacents.Any() || adjacents.All(ContainsPositiveIntegerAsAIdentifier);
         }
     }
 }

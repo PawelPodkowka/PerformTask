@@ -18,11 +18,11 @@ namespace PerformTask.DataLoader
             try
             {
                 processor.Process();
-                Console.WriteLine(string.Format("All files from passed directory ({0}) have been processed!", folderName));
+                Console.WriteLine("All files from passed directory ({0}) have been processed!", folderName);
             }
             catch (Exception exc)
             {
-                Console.WriteLine(string.Format("Upps ! :( Something went wrong. Exceptopn occured: {0}", exc.Message));
+                Console.WriteLine("Upps ! :( Something went wrong. Exceptopn occured: {0}", exc.Message);
             }
             Console.Read();
         }
